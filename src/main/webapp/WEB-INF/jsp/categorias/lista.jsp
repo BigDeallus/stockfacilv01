@@ -16,6 +16,28 @@
     </a>
 </div>
 
+<form method="get" action="categorias" class="row g-2 mb-3">
+    <div class="col-md-4">
+        <input type="text"
+               name="nombre"
+               class="form-control"
+               placeholder="Buscar por nombre"
+               value="${nombreBusqueda}">
+    </div>
+
+    <div class="col-auto">
+        <button type="submit" class="btn btn-outline-primary">
+            Buscar
+        </button>
+    </div>
+
+    <div class="col-auto">
+        <a href="categorias" class="btn btn-link">
+            Limpiar
+        </a>
+    </div>
+</form>
+
 <table class="table table-striped bg-white">
     <thead>
         <tr>

@@ -17,7 +17,7 @@ import java.util.List;
 public class CategoriaDAO {
 
     public List<Categoria> lista() throws SQLException {
-        
+
         String sql = "SELECT * FROM categoria ORDER BY nombre";
         List<Categoria> lista = new ArrayList<>();
         try (Connection con = Conexion.obtener(); PreparedStatement ps = con.prepareStatement(sql); ResultSet rs = ps.executeQuery()) {
@@ -25,6 +25,26 @@ public class CategoriaDAO {
                 lista.add(mapear(rs));
             }
         }
+        return lista;
+    }
+
+    public List<Categoria> buscarPorNombre(String nombre) throws SQLException {
+
+        String sql = "SELECT * FROM categoria WHERE nombre LIKE ? ORDER BY nombre";
+
+        List<Categoria> lista = new ArrayList<>();
+
+        try (Connection con = Conexion.obtener(); PreparedStatement ps = con.prepareStatement(sql)) {
+
+            ps.setString(1, "%" + nombre.trim() + "%");
+
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    lista.add(mapear(rs));
+                }
+            }
+        }
+
         return lista;
     }
 
