@@ -91,7 +91,7 @@ public class CategoriaDAO {
         }
     }
 
-    public void actualizar(Categoria c) throws SQLException {
+     public void actualizar(Categoria c) throws SQLException {
         String sql = "UPDATE categoria SET nombre = ?, descripcion = ?, activo = ? WHERE id_categoria = ?";
         try (Connection con = Conexion.obtener(); PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setString(1, c.getNombre());

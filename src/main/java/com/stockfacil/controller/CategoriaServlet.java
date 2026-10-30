@@ -74,7 +74,7 @@ public class CategoriaServlet extends HttpServlet {
             c.setDescripcion(req.getParameter("descripcion").trim());
             c.setActivo(req.getParameter("activo") != null || c.getIdCategoria() == 0);
             // 2. Validar en el servidor
-            List<String> errores = new ArrayList<>();
+          List<String> errores = new ArrayList<>();
             if (c.getNombre().isEmpty()) {
                 errores.add("El nombre es obligatorio.");
             } else if (dao.existeNombre(c.getNombre(), c.getIdCategoria())) {
@@ -94,6 +94,7 @@ public class CategoriaServlet extends HttpServlet {
                 dao.actualizar(c);
             }
             resp.sendRedirect("categorias");
+
         } catch (SQLException e) {
             throw new ServletException(e);
         }
